@@ -1,61 +1,108 @@
 services:
-  build:
+  pipeline03:
     parameters:
       configuration:
         content:
-          $text: pipeline_build.yml
+          $text: pipeline_pipeline03.yml
         env:
-          repo: repo
-        execute: true
-      label: simple-tekton-toolchain-20200119131027988
-      name: simple-tekton-toolchain-20200119131027988
+          service01: service01
+      label: tekton avec mono repo
+      name: tekton avec mono repo
       services:
-      - repo
+      - service01
       type: tekton
-      ui-pipeline: true
       ui_pipeline: true
     service_id: pipeline
-  repo:
+  private_worker00:
+    parameters:
+      label: my-private-worker
+      name: my-private-worker
+      workerQueueCredentials: ""
+      workerQueueIdentifier: ServiceId-809d373f-ccfd-43ba-a584-3ae9c3c0b0a2
+    service_id: private_worker
+  service00:
+    parameters:
+      api_url: http://pipeline-service/pipeline/pipelines/1a4f82db-0131-496e-839d-15faf0f092ea
+      configuration:
+        content:
+          $text: pipeline_service00.yml
+      external_api_url: https://pipeline-service.us-south.devops.cloud.ibm.com/pipeline/pipelines/1a4f82db-0131-496e-839d-15faf0f092ea
+      label: my-classic-pipeline
+      name: my-classic-pipeline
+      services:
+      - service01
+      - service02
+      type: classic
+      ui_pipeline: true
+    service_id: pipeline
+  service01:
     parameters:
       api_root_url: https://api.github.com
       authorized: github
       custom_host: ""
-      enable_traceability: true
+      enable_traceability: false
       extra_capabilities:
       - capability_id: git.issues
-        dashboard_url: https://github.com/jauninb/hello-tekton/issues
+        dashboard_url: https://github.com/jauninb/github-hello-tekton/issues
         display_name: Issues
-        enabled: false
-        label: hello-tekton
+        enabled: true
+        label: github-hello-tekton
         readme: false
         tags:
         - think
         - code
       git_id: github
-      has_issues: false
-      label: hello-tekton
+      has_issues: true
+      label: github-hello-tekton
       legal: false
       legal_label: ""
       namespace_table: ""
       owner_id: jauninb
       private_repo: false
-      repo_name: hello-tekton
-      repo_url: https://github.com/jauninb/hello-tekton.git
-      source_repo_url: https://github.com/open-toolchain/hello-tekton
+      repo_name: github-hello-tekton
+      repo_url: https://github.com/jauninb/github-hello-tekton.git
       token_url: https://otc-github-consolidated-broker.us-south.devops.cloud.ibm.com/github/token?git_id=github
       type: link
-    service_id: githubpublic
-  webide:
+    service_id: githubconsolidated
+  service02:
     parameters:
-      container_url: ""
-      dashboard_url: /devops/code/edit/edit.html#,toolchain=46fb2218-3b46-4d38-9a55-767da5935b6f
-      toolchain_id: 46fb2218-3b46-4d38-9a55-767da5935b6f
-    service_id: orion
+      access_token: ""
+      api_root_url: https://api.github.com
+      authorized: github
+      custom_host: ""
+      enable_traceability: false
+      extra_capabilities:
+      - capability_id: git.issues
+        dashboard_url: https://github.com/jauninb/tekton-adoption/issues
+        display_name: Issues
+        enabled: true
+        label: tekton-adoption
+        readme: false
+        tags:
+        - think
+        - code
+      git_id: github
+      has_issues: true
+      label: tekton-adoption
+      legal: false
+      legal_label: ""
+      namespace_table: ""
+      owner_id: jauninb
+      private_repo: false
+      repo_name: tekton-adoption
+      repo_url: https://github.com/jauninb/tekton-adoption.git
+      root_url: ""
+      source_repo_url: ""
+      title: ""
+      token_url: https://otc-github-consolidated-broker.us-south.devops.cloud.ibm.com/github/token?git_id=github
+      type: link
+    service_id: githubconsolidated
 template:
-  description: simple-tekton-toolchain-20200119131027988
-  name: Develop a Kubernetes app
+  description: extract-template-toolchain-3
+  name: Build your own toolchain
   required:
-  - repo
+  - service01
+  - service02
 toolchain:
-  name: simple-tekton-toolchain-20200119131027988
+  name: extract-template-toolchain-3-maj-pour-monorepo
 version: 2

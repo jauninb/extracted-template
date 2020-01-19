@@ -1,0 +1,13 @@
+inputs:
+- branch: master
+  path: .tekton
+  type: git
+  service: ${service01}
+triggers:
+- eventListener: listener
+  name: Manual Trigger
+  type: manual
+properties:
+- name: tekton_text_property
+  type: text
+  value: textvalue

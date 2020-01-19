@@ -8,6 +8,9 @@ triggers:
   name: Manual Trigger
   type: manual
 properties:
+- name: tekton_secure_property
+  type: secure
+  value: ""
 - name: tekton_text_property
   type: text
   value: textvalue

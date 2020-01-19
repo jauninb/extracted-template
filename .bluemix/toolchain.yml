@@ -87,8 +87,6 @@ template:
   description: extract-template-toolchain-0
   name: Build your own toolchain
   required:
-  - private_worker00
-  - service00
   - service02
   - service01
 toolchain:

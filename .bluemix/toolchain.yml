@@ -1,23 +1,26 @@
 services:
   service00:
     parameters:
-      api_url: http://pipeline-service/pipeline/pipelines/82854483-4b73-4f9c-bbe8-c519036f410b
+      api_url: http://pipeline-service/pipeline/pipelines/49002507-f2e4-4583-b9c5-23a96ff6f43c
       configuration:
         content:
           $text: pipeline_service00.yml
-      external_api_url: https://pipeline-service.us-south.devops.cloud.ibm.com/pipeline/pipelines/82854483-4b73-4f9c-bbe8-c519036f410b
-      label: my-classic-pipeline
-      name: my-classic-pipeline
+      external_api_url: https://pipeline-service.us-south.devops.cloud.ibm.com/pipeline/pipelines/49002507-f2e4-4583-b9c5-23a96ff6f43c
+      label: my-private-worker
+      name: my-private-worker
       services:
       - service01
       - service02
       type: classic
       ui_pipeline: true
-    service_id: pipeline
+      workerQueueCredentials: ""
+      workerQueueIdentifier: ServiceId-809d373f-ccfd-43ba-a584-3ae9c3c0b0a2
+    service_id: private_worker
   service01:
     parameters:
       api_root_url: https://api.github.com
       authorized: github
+      custom_host: ""
       enable_traceability: false
       extra_capabilities:
       - capability_id: git.issues
@@ -33,6 +36,8 @@ services:
       has_issues: false
       label: github-hello-tekton
       legal: false
+      legal_label: ""
+      namespace_table: ""
       owner_id: jauninb
       private_repo: false
       repo_name: github-hello-tekton
@@ -42,8 +47,10 @@ services:
     service_id: githubconsolidated
   service02:
     parameters:
+      access_token: ""
       api_root_url: https://api.github.com
       authorized: github
+      custom_host: ""
       enable_traceability: false
       extra_capabilities:
       - capability_id: git.issues
@@ -59,10 +66,15 @@ services:
       has_issues: false
       label: tekton-adoption
       legal: false
+      legal_label: ""
+      namespace_table: ""
       owner_id: jauninb
       private_repo: false
       repo_name: tekton-adoption
       repo_url: https://github.com/jauninb/tekton-adoption.git
+      root_url: ""
+      source_repo_url: ""
+      title: ""
       token_url: https://otc-github-consolidated-broker.us-south.devops.cloud.ibm.com/github/token?git_id=github
       type: link
     service_id: githubconsolidated
@@ -70,8 +82,8 @@ template:
   description: extract-template-toolchain-0
   name: Build your own toolchain
   required:
-  - service01
   - service02
+  - service01
 toolchain:
-  name: extract-template-toolchain-0
+  name: extract-template-toolchain-1
 version: 2

@@ -24,7 +24,7 @@ stages:
   - name: stage1_secure_property
     type: secure
   triggers:
-  - events: '{"push":true,"pull_request":false,"pull_request_closed":false}'
+  - events: '{"pull_request":false,"pull_request_closed":false,"push":true}'
     type: git
 - inputs:
   - branch: master

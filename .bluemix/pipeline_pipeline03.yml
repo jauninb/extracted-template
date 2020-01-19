@@ -1,20 +1,20 @@
 inputs:
-- branch: master
-  path: .tekton
-  type: git
-  service: ${service02}
-- branch: master
-  path: .tekton
-  type: git
-  service: ${service01}
+  - branch: master
+    path: .tekton
+    type: git
+    service: ${service02}
+  - branch: master
+    path: .tekton
+    type: git
+    service: ${service01}
 triggers:
-- eventListener: listener
-  name: Manual Trigger
-  type: manual
+  - eventListener: listener
+    name: Manual Trigger
+    type: manual
 properties:
-- name: tekton_secure_property
-  type: secure
-  value: ""
-- name: tekton_text_property
-  type: text
-  value: textvalue
+  - name: tekton_secure_property
+    type: secure
+    value: ""
+  - name: tekton_text_property
+    type: text
+    value: textvalue

@@ -2,14 +2,6 @@ inputs:
 - branch: master
   path: .tekton
   type: git
-  service: ${service02}
-- branch: master
-  path: .tekton-listener
-  type: git
-  service: ${service02}
-- branch: master
-  path: .tekton
-  type: git
   service: ${service01}
 triggers:
 - eventListener: listener

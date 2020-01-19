@@ -6,12 +6,10 @@ services:
           $text: pipeline_pipeline03.yml
         env:
         - service01: service01
-        - service02: service02
       label: tekton avec mono repo
       name: tekton avec mono repo
       services:
       - service01
-      - service02
       type: tekton
       ui_pipeline: true
     service_id: pipeline

@@ -1,0 +1,16 @@
+inputs:
+- branch: master
+  path: .tekton
+  type: git
+  service: ${repo}
+triggers:
+- branch: master
+  eventListener: listener
+  events:
+    pull_request: true
+    pull_request_closed: false
+    push: true
+  name: Trigger
+  type: git
+  url: https://github.com/jauninb/hello-tekton.git
+properties: []

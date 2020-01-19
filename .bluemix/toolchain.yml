@@ -5,22 +5,13 @@ services:
         content:
           $text: pipeline_build.yml
         env:
-          API_KEY: eB-GM5qHYwFvllQn_AMEpLV8tNxBP0UIxkci1gx4Jx6u
-          CF_APP_NAME: simple-tekton-toolchain-20200119131027988
-          GIT_REPO: repo
-          PROD_CLUSTER_NAME: mycluster
-          PROD_CLUSTER_NAMESPACE: prod
-          PROD_REGION_ID: ibm:yp:us-south
-          REGISTRY_NAMESPACE: bp2i
-          REGISTRY_REGION_ID: ibm:yp:us-south
-          REVISION: master
-        execute: true
+          repo: repo
+        execute: false
       label: simple-tekton-toolchain-20200119131027988
       name: simple-tekton-toolchain-20200119131027988
       services:
       - repo
       type: tekton
-      ui-pipeline: true
       ui_pipeline: true
     service_id: pipeline
   repo:

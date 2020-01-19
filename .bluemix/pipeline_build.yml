@@ -13,4 +13,3 @@ triggers:
   name: Trigger
   type: git
   url: https://github.com/jauninb/hello-tekton.git
-properties: []

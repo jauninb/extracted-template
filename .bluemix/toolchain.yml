@@ -6,12 +6,13 @@ services:
           $text: pipeline_build.yml
         env:
           repo: repo
-        execute: false
+        execute: true
       label: simple-tekton-toolchain-20200119131027988
       name: simple-tekton-toolchain-20200119131027988
       services:
       - repo
       type: tekton
+      ui-pipeline: true
       ui_pipeline: true
     service_id: pipeline
   repo:

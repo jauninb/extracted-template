@@ -7,7 +7,6 @@ inputs:
   path: .tekton
   type: git
   service: ${service01}
-private_worker: (Beta) IBM Managed workers
 triggers:
 - eventListener: listener
   name: Manual Trigger

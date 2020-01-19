@@ -5,8 +5,8 @@ services:
         content:
           $text: pipeline_pipeline03.yml
         env:
-        - service01: service01
-        - service02: service02
+          service01: service01
+          service02: service02
       label: my-tekton-pipeline
       name: my-tekton-pipeline
       services:

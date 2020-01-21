@@ -1,109 +1,34 @@
 services:
-  pipeline03:
+  gitlab00:
     parameters:
-      configuration:
-        content:
-          $text: pipeline_pipeline03.yml
-        env:
-          service02: service02
-      label: my-tekton-pipeline
-      name: my-tekton-pipeline
-      services:
-      - service01
-      - service02
-      type: tekton
-      ui_pipeline: true
-    service_id: pipeline
-  private_worker00:
-    parameters:
-      label: my-private-worker
-      name: my-private-worker
-      workerQueueCredentials: ""
-      workerQueueIdentifier: ServiceId-809d373f-ccfd-43ba-a584-3ae9c3c0b0a2
-    service_id: private_worker
-  service00:
-    parameters:
-      api_url: http://pipeline-service/pipeline/pipelines/41b311bc-dbb1-4f80-b415-c3ee76f60db2
-      configuration:
-        content:
-          $text: pipeline_service00.yml
-      external_api_url: https://pipeline-service.us-south.devops.cloud.ibm.com/pipeline/pipelines/41b311bc-dbb1-4f80-b415-c3ee76f60db2
-      label: my-classic-pipeline
-      name: my-classic-pipeline
-      services:
-      - service01
-      - service02
-      type: classic
-      ui_pipeline: true
-    service_id: pipeline
-  service01:
-    parameters:
-      access_token: ""
-      api_root_url: https://api.github.com
-      authorized: github
-      custom_host: ""
+      api_root_url: https://us-south.git.cloud.ibm.com/api
+      authorized: 8593234b-6b56-4463-98f4-2fcc4c4f1c87
       enable_traceability: false
       extra_capabilities:
       - capability_id: git.issues
-        dashboard_url: https://github.com/jauninb/github-hello-tekton/issues
+        dashboard_url: https://us-south.git.cloud.ibm.com/jaunin.b/hello-tekton-grit/issues
         display_name: Issues
         enabled: false
-        label: github-hello-tekton
+        label: hello-tekton-grit
         readme: false
         tags:
         - think
         - code
-      git_id: github
+      git_id: 8593234b-6b56-4463-98f4-2fcc4c4f1c87
       has_issues: false
-      label: github-hello-tekton
-      legal: false
-      legal_label: ""
-      namespace_table: ""
-      owner_id: jauninb
-      private_repo: false
-      repo_name: github-hello-tekton
-      repo_url: https://github.com/jauninb/github-hello-tekton.git
-      root_url: ""
-      source_repo_url: ""
-      title: ""
-      token_url: https://otc-github-consolidated-broker.us-south.devops.cloud.ibm.com/github/token?git_id=github
+      label: hello-tekton-grit
+      owner_id: jaunin.b
+      private_repo: true
+      repo_name: hello-tekton-grit
+      repo_url: https://us-south.git.cloud.ibm.com/jaunin.b/hello-tekton-grit.git
+      token_url: https://otc-github-consolidated-broker.eu-de.devops.cloud.ibm.com/github/token?git_id=8593234b-6b56-4463-98f4-2fcc4c4f1c87
       type: link
-    service_id: githubconsolidated
-  service02:
-    parameters:
-      api_root_url: https://api.github.com
-      authorized: github
-      custom_host: ""
-      enable_traceability: false
-      extra_capabilities:
-      - capability_id: git.issues
-        dashboard_url: https://github.com/jauninb/tekton-adoption/issues
-        display_name: Issues
-        enabled: false
-        label: tekton-adoption
-        readme: false
-        tags:
-        - think
-        - code
-      git_id: github
-      has_issues: false
-      label: tekton-adoption
-      legal: false
-      legal_label: ""
-      namespace_table: ""
-      owner_id: jauninb
-      private_repo: false
-      repo_name: tekton-adoption
-      repo_url: https://github.com/jauninb/tekton-adoption.git
-      token_url: https://otc-github-consolidated-broker.us-south.devops.cloud.ibm.com/github/token?git_id=github
-      type: link
-    service_id: githubconsolidated
+    service_id: gitlab
 template:
-  description: extract-template-toolchain-2
+  description: custom-git-server-toolchain
   name: Build your own toolchain
   required:
-  - service02
-  - service01
+  - gitlab00
 toolchain:
-  name: extract-template-toolchain-3
+  name: custom-git-server-toolchain
 version: 2

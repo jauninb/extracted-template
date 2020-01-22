@@ -1,0 +1,10 @@
+inputs:
+- branch: master
+  path: .tekton
+  type: git
+  service: ${githubconsolidated00}
+triggers:
+- eventListener: listener
+  name: Manual Trigger
+  type: manual
+properties: []

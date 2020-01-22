@@ -1,0 +1,44 @@
+stages:
+- inputs:
+  - branch: master
+    dir_name: null
+    type: git
+    service: githubconsolidated03
+  jobs:
+  - curatedDockerImage: default
+    name: Test
+    script: |-
+      #!/bin/bash
+      #Invoke tests here
+    test_type: simple
+    type: tester
+  name: StageInheritedWorker
+  permission:
+    execute: TOOLCHAIN_ADMINS
+- jobs:
+  - curatedDockerImage: default
+    name: Test
+    script: |-
+      #!/bin/bash
+      #Invoke tests here
+    test_type: simple
+    type: tester
+  name: StageSharedWorkerSpecified
+  permission:
+    execute: TOOLCHAIN_ADMINS
+  triggers:
+  - type: stage
+- jobs:
+  - curatedDockerImage: default
+    name: Test
+    script: |-
+      #!/bin/bash
+      #Invoke tests here
+    test_type: simple
+    type: tester
+  name: StagePrivateWorkerSpecified
+  permission:
+    execute: TOOLCHAIN_ADMINS
+  triggers:
+  - type: stage
+properties: []

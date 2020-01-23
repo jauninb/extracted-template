@@ -27,6 +27,7 @@ stages:
   - name: stagefilepropertues
     type: file
     value: build.properties
+  worker: null
 - jobs:
   - curatedDockerImage: default
     name: Test
@@ -53,6 +54,7 @@ stages:
     execute: TOOLCHAIN_ADMINS
   triggers:
   - type: stage
+  worker: ${private_worker01}
 properties:
 - name: pipelinetextproperty
   type: text

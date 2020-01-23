@@ -3,8 +3,26 @@ inputs:
   path: .tekton
   type: git
   service: ${githubconsolidated00}
+- branch: master
+  path: .tekton
+  type: git
+  service: ${githubconsolidated03}
+- branch: master
+  path: .tekton-listener
+  type: git
+  service: ${githubconsolidated03}
+private_worker: ${private_worker02}
 triggers:
 - eventListener: listener
   name: Manual Trigger
   type: manual
-properties: []
+properties:
+- name: secureproperty
+  type: SECURE
+  value: ""
+- name: textareaproperty
+  type: textarea
+  value: Text Area Property Value
+- name: textproperty
+  type: text
+  value: Text Property Value

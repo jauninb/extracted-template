@@ -25,7 +25,7 @@ services:
       token_url: https://otc-github-consolidated-broker.us-south.devops.cloud.ibm.com/github/token?git_id=github
       type: link
     service_id: githubconsolidated
-  githubconsolidated02:
+  githubconsolidated03:
     parameters:
       api_root_url: https://api.github.com
       authorized: github
@@ -51,7 +51,7 @@ services:
       token_url: https://otc-github-consolidated-broker.us-south.devops.cloud.ibm.com/github/token?git_id=github
       type: link
     service_id: githubconsolidated
-  githubconsolidated03:
+  githubconsolidated04:
     parameters:
       api_root_url: https://api.github.com
       authorized: github
@@ -77,39 +77,23 @@ services:
       token_url: https://otc-github-consolidated-broker.us-south.devops.cloud.ibm.com/github/token?git_id=github
       type: link
     service_id: githubconsolidated
-  pipeline04:
+  pipeline05:
     parameters:
       api_url: http://pipeline-service/pipeline/pipelines/f028297e-6182-4529-9e9f-1be298507107
       configuration:
         content:
-          $text: pipeline_pipeline04.yml
+          $text: pipeline_pipeline05.yml
         env:
           private_worker01: '{{services.private_worker01.parameters.name}}'
+          private_worker02: '{{services.private_worker02.parameters.name}}'
       external_api_url: https://pipeline-service.us-south.devops.cloud.ibm.com/pipeline/pipelines/f028297e-6182-4529-9e9f-1be298507107
       label: theclassicpipeline
       name: theclassicpipeline
       services:
-      - githubconsolidated03
+      - githubconsolidated04
       - private_worker01
+      - private_worker02
       type: classic
-      ui_pipeline: true
-    service_id: pipeline
-  pipeline05:
-    parameters:
-      configuration:
-        content:
-          $text: pipeline_pipeline05.yml
-        env:
-          githubconsolidated00: githubconsolidated00
-          githubconsolidated02: githubconsolidated02
-          private_worker01: '{{services.private_worker01.parameters.name}}'
-      label: thetektonpipeline
-      name: thetektonpipeline
-      services:
-      - githubconsolidated00
-      - githubconsolidated02
-      - private_worker01
-      type: tekton
       ui_pipeline: true
     service_id: pipeline
   pipeline06:
@@ -117,6 +101,24 @@ services:
       configuration:
         content:
           $text: pipeline_pipeline06.yml
+        env:
+          githubconsolidated00: githubconsolidated00
+          githubconsolidated03: githubconsolidated03
+          private_worker02: '{{services.private_worker02.parameters.name}}'
+      label: thetektonpipeline
+      name: thetektonpipeline
+      services:
+      - githubconsolidated00
+      - githubconsolidated03
+      - private_worker02
+      type: tekton
+      ui_pipeline: true
+    service_id: pipeline
+  pipeline07:
+    parameters:
+      configuration:
+        content:
+          $text: pipeline_pipeline07.yml
         env:
           githubconsolidated00: githubconsolidated00
       label: thetektonpipelinewithsharedworker
@@ -128,6 +130,13 @@ services:
     service_id: pipeline
   private_worker01:
     parameters:
+      label: anotherprivateworker
+      name: anotherprivateworker
+      workerQueueCredentials: ""
+      workerQueueIdentifier: ServiceId-809d373f-ccfd-43ba-a584-3ae9c3c0b0a2
+    service_id: private_worker
+  private_worker02:
+    parameters:
       label: theprivateworker
       name: theprivateworker
       workerQueueCredentials: ""
@@ -138,9 +147,10 @@ template:
   name: Build your own toolchain
   required:
   - githubconsolidated00
-  - githubconsolidated02
   - githubconsolidated03
+  - githubconsolidated04
   - private_worker01
+  - private_worker02
 toolchain:
   name: private-worker-samples
 version: 2

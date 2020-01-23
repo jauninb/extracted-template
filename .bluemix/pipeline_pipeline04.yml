@@ -15,6 +15,18 @@ stages:
   name: StageInheritedWorker
   permission:
     execute: TOOLCHAIN_ADMINS
+  properties:
+  - name: stagetextproperty
+    type: text
+    value: value for text property
+  - name: stagetextareaproperty
+    type: text_area
+    value: "value for text \narea property\nmultilines"
+  - name: stagesecureproperty
+    type: secure
+  - name: stagefilepropertues
+    type: file
+    value: build.properties
 - jobs:
   - curatedDockerImage: default
     name: Test
@@ -41,4 +53,18 @@ stages:
     execute: TOOLCHAIN_ADMINS
   triggers:
   - type: stage
-properties: []
+properties:
+- name: pipelinetextproperty
+  type: text
+  value: value for text property
+- name: pipelinetextareaproperty
+  type: text_area
+  value: |-
+    value for
+    a textarea property
+- name: secureproperty
+  type: secure
+- name: filesproperty
+  type: file
+  value: build.properties
+private_worker: ${private_worker01}

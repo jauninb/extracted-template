@@ -83,11 +83,14 @@ services:
       configuration:
         content:
           $text: pipeline_pipeline04.yml
+        env:
+          private_worker01: '{{services.private_worker01.parameters.name}}'
       external_api_url: https://pipeline-service.us-south.devops.cloud.ibm.com/pipeline/pipelines/f028297e-6182-4529-9e9f-1be298507107
       label: theclassicpipeline
       name: theclassicpipeline
       services:
       - githubconsolidated03
+      - private_worker01
       type: classic
       ui_pipeline: true
     service_id: pipeline

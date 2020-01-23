@@ -16,4 +16,13 @@ triggers:
 - eventListener: listener
   name: Manual Trigger
   type: manual
-properties: []
+properties:
+- name: secureproperty
+  type: SECURE
+  value: ""
+- name: textareaproperty
+  type: textarea
+  value: Text Area Property Value
+- name: textproperty
+  type: text
+  value: Text Property Value

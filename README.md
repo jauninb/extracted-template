@@ -230,3 +230,7 @@ on 2020-01-23T17-28-28
 
 Generated from toolchain URL: https://cloud.ibm.com/devops/toolchains/c4fe5d60-885c-4791-a0fa-1939412b8bf2?env_id=ibm:yp:us-south
 on 2020-01-23T17-30-58
+# extract-template-toolchain-3
+
+Generated from toolchain URL: https://cloud.ibm.com/devops/toolchains/a9f598c3-18a7-4ef5-981f-fd195da2156f?env_id=ibm:yp:us-south
+on 2020-01-27T08-45-03

@@ -1,0 +1,21 @@
+inputs:
+- branch: master
+  path: .tekton
+  type: git
+  service: ${service02}
+- branch: master
+  path: .tekton
+  type: git
+  service: ${service01}
+private_worker: ${private_worker00}
+properties:
+- name: tekton_secure_property
+  type: SECURE
+  value: ""
+- name: tekton_text_property
+  type: text
+  value: textvalue
+triggers:
+- eventListener: listener
+  name: Manual Trigger
+  type: manual
